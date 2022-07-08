@@ -1,4 +1,13 @@
-﻿
+﻿using Newtonsoft.Json;
+public partial class Root
+{
+    [JsonProperty(PropertyName = "words")]
+    public static string[] words { get; set; }
+}
+
+
+
+
 public partial class Program
 {
 
@@ -56,25 +65,42 @@ public partial class Program
 
     static void StartGame()
     {
-        string[] words = new string[]
+
+       Root woerter = new Root();
+
+        using (StreamReader r = new StreamReader("C:\\Users\\PC61A\\source\\Programmieren_Tutorials\\ProjektHangman\\ProjektHangman\\searchWords.json"))
         {
-            "Regisseur",
-            "Massachusetts",
-            "Steuerersparnisse",
-            "Schleuder",
-            "Propeller",
-            "Nordgesicht",
-            "Neustrelitz",
-            "Hummel",
-            
+            string json = r.ReadToEnd();
+            woerter = JsonConvert.DeserializeObject<Root>(json);
+
+        }
+
+
+        
+       
 
 
 
-        };
+
+        //string[] words = new string[]
+        //{
+        //    "Regisseur",
+        //    "Massachusetts",
+        //    "Steuerersparnisse",
+        //    "Schleuder",
+        //    "Propeller",
+        //    "Nordgesicht",
+        //    "Neustrelitz",
+        //    "Hummel",
+
+        //};
+
+
+
 
         Random rnd = new Random();
-        int index = rnd.Next(0, words.Length);
-        string word = words[index].ToLower();
+        int index = rnd.Next(0, Root.words.Length);
+        string word = Root.words[index].ToLower();
         GameLoop(word);
     }
 
@@ -103,14 +129,14 @@ public partial class Program
             Console.WriteLine();
 
             Console.Write("Buchstabe: ");
-            
+
             char character = Convert.ToChar(Console.ReadLine().ToLower());
 
             bool foundCharacterInWord = false;
 
             for (int i = 0; i < word.Length; i++)
             {
-                if (word[i]== character)
+                if (word[i] == character)
                 {
                     foundCharacterInWord = true;
                     break;
@@ -140,7 +166,7 @@ public partial class Program
                     }
                 }
 
-                if(hiddenWord == word)
+                if (hiddenWord == word)
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
@@ -157,7 +183,7 @@ public partial class Program
             else
             {
                 hiddenWord = tempHiddenWord;
-                if(lives > 0)
+                if (lives > 0)
                 {
                     lives -= 1;
                 }
