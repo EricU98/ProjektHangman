@@ -1,2 +1,5 @@
 # ProjektHangman
-C# Hangman Game
+Simple C# Hangman Game
+
+Changable Random Words
+Changable Lives
