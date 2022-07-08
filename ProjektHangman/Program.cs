@@ -58,12 +58,18 @@ public partial class Program
     {
         string[] words = new string[]
         {
-            "Apfelkuchen",
-            "Lastwagen",
-            "Videospiel",
-            "Alarmanlage",
-            "Vollkornbrot",
-            "Kraftfahrzeug",
+            "Regisseur",
+            "Massachusetts",
+            "Steuerersparnisse",
+            "Schleuder",
+            "Propeller",
+            "Nordgesicht",
+            "Neustrelitz",
+            "Hummel",
+            
+
+
+
         };
 
         Random rnd = new Random();
@@ -96,7 +102,8 @@ public partial class Program
             }
             Console.WriteLine();
 
-            Console.Write("Buchstaben eingeben: ");
+            Console.Write("Buchstabe: ");
+            
             char character = Convert.ToChar(Console.ReadLine().ToLower());
 
             bool foundCharacterInWord = false;
