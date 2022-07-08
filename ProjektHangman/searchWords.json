@@ -9,5 +9,6 @@
     "Hardware",
     "Software"
 
-  ]
+  ],
+  "lives": "10"
 }

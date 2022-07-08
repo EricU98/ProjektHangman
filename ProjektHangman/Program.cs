@@ -3,6 +3,8 @@ public partial class Root
 {
     [JsonProperty(PropertyName = "words")]
     public static string[] words { get; set; }
+    [JsonProperty(PropertyName = "lives")]
+    public static int lives { get; set; }
 }
 
 
@@ -75,29 +77,6 @@ public partial class Program
 
         }
 
-
-        
-       
-
-
-
-
-        //string[] words = new string[]
-        //{
-        //    "Regisseur",
-        //    "Massachusetts",
-        //    "Steuerersparnisse",
-        //    "Schleuder",
-        //    "Propeller",
-        //    "Nordgesicht",
-        //    "Neustrelitz",
-        //    "Hummel",
-
-        //};
-
-
-
-
         Random rnd = new Random();
         int index = rnd.Next(0, Root.words.Length);
         string word = Root.words[index].ToLower();
@@ -107,7 +86,10 @@ public partial class Program
 
     static void GameLoop(string word)
     {
-        int lives = 10;
+        
+        int lives;
+        lives = Root.lives;
+
         string hiddenWord = "";
 
         for (int i = 0; i < word.Length; i++)
