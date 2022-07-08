@@ -69,8 +69,10 @@ public partial class Program
     {
 
        Root woerter = new Root();
+        string fileName = "Searchwords.json";
+        string path = Path.Combine(Environment.CurrentDirectory, @"Data\", fileName);
 
-        using (StreamReader r = new StreamReader("C:\\Users\\PC61A\\source\\Programmieren_Tutorials\\ProjektHangman\\ProjektHangman\\searchWords.json"))
+        using (StreamReader r = new StreamReader(path))
         {
             string json = r.ReadToEnd();
             woerter = JsonConvert.DeserializeObject<Root>(json);
@@ -111,8 +113,19 @@ public partial class Program
             Console.WriteLine();
 
             Console.Write("Buchstabe: ");
-
-            char character = Convert.ToChar(Console.ReadLine().ToLower());
+            char character = '\0';
+            
+            try
+            {
+                character = Convert.ToChar(Console.ReadLine().ToLower());
+            }
+            catch (Exception)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ERROR");
+                Console.ResetColor();
+            }
+            
 
             bool foundCharacterInWord = false;
 
