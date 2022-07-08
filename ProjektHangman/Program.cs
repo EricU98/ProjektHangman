@@ -19,7 +19,7 @@ public partial class Program
     }
 
 
-
+    //MainMenu
     static void MainMenu()
     {
         while (true)
@@ -65,6 +65,7 @@ public partial class Program
 
     }
 
+    //StartGame - Gets all words + number of lives from json file
     static void StartGame()
     {
 
