@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+
+//Class for Json Deserialize
 public partial class Root
 {
     [JsonProperty(PropertyName = "words")]
